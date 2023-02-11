@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -29,7 +28,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SimpleButton2()
+                    Column (
+                        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    )
+                    {
+//                        SimpleButton1()
+//                         SimpleButton2()
+
+                         var count by remember { mutableStateOf(0)}
+
+                        SimpleButton3(count,  onCounterChange= {
+                            count++
+                              } )
+
+                    }
                 }
             }
         }
@@ -39,45 +52,46 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SimpleButton1() {
-
-    Column (
-        horizontalAlignment = Alignment.Companion.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-            )
-    {
-
-        //step 1
         var count: Int = 0
 
         Button(onClick = {
             //your onclick code here
             count++
         }) {
-            Text(text = "Total $count")
+            Text(text = "click me")
         }
-    }
+        Text( text = "$count")
 }
 
-@SuppressLint("UnrememberedMutableState")
+
 @Composable
 fun SimpleButton2() {
-    Column (
-        horizontalAlignment = Alignment.Companion.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    )
-    {
 
-        //step 2
-        var count: MutableState<Int> = mutableStateOf(0)
+        var count by remember {mutableStateOf(0)}
 
         Button(onClick = {
             //your onclick code here
-            count.value++
+            count++
         }) {
-            Text(text = "Total ${count.value}")
+            Text(text = "click me")
         }
+        Text( text = "$count")
     }
+
+@Composable
+fun SimpleButton3 (count: Int, onCounterChange: (Int) -> Unit) {
+
+    Button(onClick = {
+        //your onclick code here
+        onCounterChange (count)
+    }) {
+        Text(text = "click me")
+    }
+    Text(  text = "$count")
 }
+
+
+
 
 
 @Preview(showBackground = true)
