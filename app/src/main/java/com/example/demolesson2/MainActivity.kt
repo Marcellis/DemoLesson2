@@ -33,14 +33,13 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center
                     )
                     {
-//                        SimpleButton1()
-//                         SimpleButton2()
+                   SimpleButton1()
+   //                      SimpleButton2()
 
-                         var count by remember { mutableStateOf(0)}
 
-                        SimpleButton3(count,  onCounterChange= {
-                            count++
-                              } )
+    //                var count by remember { mutableStateOf(0)}
+
+    //                 SimpleButton3(count, {count++ })
 
                     }
                 }
