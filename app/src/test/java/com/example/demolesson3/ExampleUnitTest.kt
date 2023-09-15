@@ -1,4 +1,4 @@
-package com.example.demolesson2
+package com.example.demolesson3
 
 import org.junit.Test
 

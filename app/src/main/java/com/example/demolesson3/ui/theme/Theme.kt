@@ -1,4 +1,4 @@
-package com.example.demolesson2.ui.theme
+package com.example.demolesson3.ui.theme
 
 import android.app.Activity
 import android.os.Build
